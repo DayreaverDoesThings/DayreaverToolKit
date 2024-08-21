@@ -1,2 +1,2 @@
 # DayreaverToolKit
-Simple batch utils
+Simple utils
