@@ -1,10 +1,17 @@
 @echo off
+:enterpath
+set /p filepath="Enter the full path to the file: "
 
-if "%~1"=="" (
-    echo This script is meant to be used with drag-and-drop only.
-    echo Exiting...
-    timeout /t 3 >nul
-    exit /b
+if not exist "%filepath%" (
+    echo error: filepath does not exist.
+    goto enterpath
 )
 
-xcopy "%~1" "%~1_copy" /E /I /H /K /Y
+if exist "checksum.txt" (
+    del checksum.txt
+)
+
+certutil -hashfile "%filepath%" MD5
+certutil -hashfile "%filepath%" MD5 > checksum.txt
+
+pause
