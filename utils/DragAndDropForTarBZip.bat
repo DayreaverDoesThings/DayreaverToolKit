@@ -7,4 +7,5 @@ if "%~1"=="" (
     exit /b
 )
 
+// tar in windows, dont ask
 tar -cjf "%~n1.tar.bz2" -C "%~1" .
